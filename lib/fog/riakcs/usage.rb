@@ -1,4 +1,3 @@
-require 'fog/riakcs/core'
 require 'time'
 
 module Fog
@@ -7,11 +6,11 @@ module Fog
       requires :riakcs_access_key_id, :riakcs_secret_access_key
       recognizes :host, :path, :port, :scheme, :persistent
 
-      request_path 'fog/riakcs/requests/usage'
+      request_path 'fog/riakcs/usage'
       request :get_usage
 
       class Mock
-        include Utils
+        include Fog::RiakCS::Utils
 
         def self.data
           @data ||= Hash.new do |hash, key|
@@ -37,7 +36,7 @@ module Fog
       end
 
       class Real
-        include Utils
+        include Fog::RiakCS::Utils
 
         def initialize(options = {})
           configure_uri_options(options)

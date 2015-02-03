@@ -1,5 +1,3 @@
-require 'fog/riakcs/core'
-
 module Fog
   module RiakCS
     class Provisioning < Fog::Service
@@ -9,7 +7,8 @@ module Fog
       requires :riakcs_access_key_id, :riakcs_secret_access_key
       recognizes :host, :path, :port, :scheme, :persistent, :path_style
 
-      request_path 'fog/riakcs/requests/provisioning'
+      request_path 'fog/riakcs/provisioning'
+
       request :create_user
       request :update_user
       request :disable_user
@@ -19,7 +18,7 @@ module Fog
       request :regrant_secret
 
       class Mock
-        include Utils
+        include Fog::RiakCS::Utils
 
         def self.data
           @data ||= Hash.new({})
@@ -43,7 +42,7 @@ module Fog
       end
 
       class Real
-        include Utils
+        include Fog::RiakCS::Utils
 
         def initialize(options = {})
           configure_uri_options(options)
