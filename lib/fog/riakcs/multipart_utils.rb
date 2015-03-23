@@ -1,7 +1,7 @@
 module Fog
   module RiakCS
     module MultipartUtils
-      autoload :Headers, 'fog/riakcs/multipart_utils/headers'
+      autoload :Headers, File.expand_path('../multipart_utils/headers', __FILE__)
 
       def parse(data, boundary)
         contents = data.match(end_boundary_regex(boundary)).pre_match rescue ""

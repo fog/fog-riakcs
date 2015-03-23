@@ -5,11 +5,11 @@ module Fog
   module RiakCS
     extend Fog::Provider
 
-    autoload :MultipartUtils, 'fog/riakcs/multipart_utils'
-    autoload :Provisioning, 'fog/riakcs/provisioning'
-    autoload :Utils, 'fog/riakcs/utils'
-    autoload :UserUtils, 'fog/riakcs/user_utils'
-    autoload :Usage, 'fog/riakcs/usage'
+    autoload :MultipartUtils, File.expand_path('../riakcs/multipart_utils', __FILE__)
+    autoload :Provisioning, File.expand_path('../riakcs/provisioning', __FILE__)
+    autoload :Utils, File.expand_path('../riakcs/utils', __FILE__)
+    autoload :UserUtils, File.expand_path('../riakcs/user_utils', __FILE__)
+    autoload :Usage, File.expand_path('../riakcs/usage', __FILE__)
 
     service(:provisioning, 'Provisioning')
     service(:usage,        'Usage')
